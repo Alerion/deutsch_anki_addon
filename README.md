@@ -2,6 +2,7 @@
 
 ## Hotkeys
 
+- ``F1`` - generate Anki card for copied word. Use ``F12`` in Edit card window.
 - ``F2`` - color translation and makes text bold.
 - ``F3`` - insert "der".
 - ``F4`` - insert "die".
