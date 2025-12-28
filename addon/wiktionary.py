@@ -1,25 +1,9 @@
 import re
 from dataclasses import dataclass
-from enum import Enum
 
 import requests
 
-
-class SpeachPart(str, Enum):
-    NOUN = "NOUN"
-    VERB = "VERB"
-    ADJECTIVE = "ADJECTIVE"
-    ADVERB = "ADVERB"
-    PRONOUN = "PRONOUN"
-    NUMBER = "NUMBER"
-    JUNKTION = "JUNKTION"
-    PLURAL = "PLURAL"
-
-
-class Gender(str, Enum):
-    MALE = "MALE"
-    FEMALE = "FEMALE"
-    NEUTRAL = "NEUTRAL"
+from .enums import Gender, SpeachPart
 
 
 @dataclass
