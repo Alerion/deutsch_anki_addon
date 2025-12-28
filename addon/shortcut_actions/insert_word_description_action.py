@@ -14,7 +14,7 @@ from ..card_html import (
 from ..enums import SpeachPart
 
 
-def insert_word_description(editor: aqt.editor.Editor, only_audio: bool = False) -> None:
+def insert_word_description(editor: aqt.editor.Editor) -> None:
     config = mw.addonManager.getConfig(__name__)
     if config is None:
         showInfo("Config is not available")
