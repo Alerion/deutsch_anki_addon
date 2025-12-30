@@ -10,6 +10,8 @@ from ..card_html import (
     GENDER_TO_ARTICLE,
     GENDER_TO_TEXT,
     SPEACH_PART_TO_TEXT,
+    bold,
+    italic,
 )
 from ..enums import SpeachPart
 
@@ -110,7 +112,9 @@ def insert_word_description(editor: aqt.editor.Editor) -> None:
             '<span class="synonyms-label">Синоніми:</span><ul class="synonyms-list">'
         )
         for synonym in explain_word_with_ai_response.synonyms:
-            editor.note["Example"] += f"<li>{synonym.word} ({synonym.difference})</li>"
+            editor.note["Example"] += (
+                f"<li>{bold(synonym.word)} - {italic(synonym.difference)}</li>"
+            )
         editor.note["Example"] += "</ul>"
 
     # Add additional info.
@@ -153,13 +157,22 @@ def insert_word_description(editor: aqt.editor.Editor) -> None:
 
 
 def _generate_back(explain_word_with_ai_response: ExplainWordResponse) -> str:
-    matched_text = re.search(r"(.+)\((.+)\)", explain_word_with_ai_response.ukrainian_translation)
+    back = _format_text_with_parentheses(explain_word_with_ai_response.ukrainian_translation)
 
-    back = (
-        f'<span style="font-weight: bold;">{matched_text.group(1)}</span>({matched_text.group(2)})'
-        if matched_text
-        else explain_word_with_ai_response.ukrainian_translation
-    )
     if explain_word_with_ai_response.additional_context:
-        back += f'<br><span style="font-style: italic">{explain_word_with_ai_response.additional_context}</span>'
+        back += f"<br>{italic(explain_word_with_ai_response.additional_context)}"
+
     return back
+
+
+def _format_text_with_parentheses(text: str) -> str:
+    parts = re.split(r"(\([^)]+\))", text)
+
+    result = []
+    for part in parts:
+        if part.startswith("("):
+            result.append(part)
+        elif part.strip():
+            result.append(bold(part))
+
+    return "".join(result)

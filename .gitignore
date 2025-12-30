@@ -154,3 +154,4 @@ cython_debug/
 
 notes.txt
 addon/meta.json
+_marimo/

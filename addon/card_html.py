@@ -38,3 +38,11 @@ GENDER_TO_ARTICLE = {
     Gender.FEMALE: "die",
     Gender.NEUTRAL: "das",
 }
+
+
+def bold(text: str) -> str:
+    return f'<span style="font-weight: bold;">{text}</span>'
+
+
+def italic(text: str) -> str:
+    return f'<span style="font-style: italic;">{text}</span>'

@@ -31,14 +31,14 @@ Generiere ein JSON-Objekt mit folgenden Feldern:
    [{"word": "Synonym", "difference": "kurze Erklärung auf Ukrainisch"}]
    Nur die häufigsten 2-4 Synonyme. Unterschied sehr kurz erklären.
 
-5. "additional_info": Array mit wichtigen Zusatzinformationen auf Ukrainisch:
-   - Rektion (Kasus) bei Verben
-   - Typische Kollokationen
-   - Verwechslungsgefahr mit ähnlichen Wörtern
-   - Zusätzliche Bedeutungen
-   - Etymologie nur wenn sie beim Merken hilft
-   - NICHT: trennbar/untrennbar, Konjugationsformen — diese Info kommt aus anderer Quelle
-   Leeres Array [] wenn nichts Wichtiges hinzuzufügen ist.
+5. "additional_info": Array mit festen Wendungen und nicht-offensichtlichen Konstruktionen auf Ukrainisch:
+   - Feste Redewendungen und Ausdrücke mit diesem Wort
+   - Nicht-offensichtliche grammatische Konstruktionen (z.B. "anfangen + zu + Infinitiv")
+   - Nur wenn das Wort Teil eines komplexeren Ausdrucks ist
+   - Format: "deutscher Ausdruck — ukrainische Erklärung"
+   - NICHT: einfache Kasusangaben wie "etw. (Akk.) ablehnen" — das ist offensichtlich
+   - NICHT: Genus, Plural, Konjugation, trennbar/untrennbar
+   Leeres Array [] wenn es keine relevanten festen Wendungen gibt.
 
 Antworte NUR mit dem JSON-Objekt, ohne Markdown-Formatierung, Codeblöcke oder zusätzlichen Text.
 
@@ -51,7 +51,7 @@ Eingabe:
 - Wortart: VERB
 
 Ausgabe:
-{"ukrainian_translation":"відхилити (пропозицію, запрошення, прохання), відмовити","additional_context":"дуже поширене","usage_examples":["Er hat mein Angebot abgelehnt.","Sie lehnte die Einladung höflich ab.","Der Antrag wurde abgelehnt.","Warum lehnst du jede Hilfe ab?"],"synonyms":[{"word":"zurückweisen","difference":"більш формальне, категоричніше"},{"word":"verweigern","difference":"відмовити у чомусь, що вимагають"},{"word":"absagen","difference":"скасувати заплановане, відмовити на запрошення"}],"additional_info":["Керування: etw. (Akk.) ablehnen"]}
+{"ukrainian_translation":"відхилити (пропозицію, запрошення, прохання), відмовити","additional_context":"дуже поширене","usage_examples":["Er hat mein Angebot abgelehnt.","Sie lehnte die Einladung höflich ab.","Der Antrag wurde abgelehnt.","Warum lehnst du jede Hilfe ab?"],"synonyms":[{"word":"zurückweisen","difference":"більш формальне, категоричніше"},{"word":"verweigern","difference":"відмовити у чомусь, що вимагають"},{"word":"absagen","difference":"скасувати заплановане, відмовити на запрошення"}],"additional_info":[]}
 
 Beispiel 2:
 
@@ -60,7 +60,7 @@ Eingabe:
 - Wortart: ADVERB
 
 Ausgabe:
-{"ukrainian_translation":"вниз, донизу (напрямок руху)","additional_context":"поширене; протилежне до aufwärts","usage_examples":["Der Weg führt abwärts.","Es geht mit der Wirtschaft abwärts.","Von hier an geht es nur noch abwärts."],"synonyms":[{"word":"hinunter","difference":"конкретний рух від себе вниз"},{"word":"herunter","difference":"конкретний рух до себе вниз"},{"word":"nach unten","difference":"частіше в розмові"}],"additional_info":["Часто в переносному значенні: mit etw. geht es abwärts — справи погіршуються"]}
+{"ukrainian_translation":"вниз, донизу (напрямок руху)","additional_context":"поширене; протилежне до aufwärts","usage_examples":["Der Weg führt abwärts.","Es geht mit der Wirtschaft abwärts.","Von hier an geht es nur noch abwärts."],"synonyms":[{"word":"hinunter","difference":"конкретний рух від себе вниз"},{"word":"herunter","difference":"конкретний рух до себе вниз"},{"word":"nach unten","difference":"частіше в розмові"}],"additional_info":["mit jdm./etw. geht es abwärts — у когось/чогось справи погіршуються"]}
 
 Beispiel 3:
 
@@ -69,7 +69,7 @@ Eingabe:
 - Wortart: VERB
 
 Ausgabe:
-{"ukrainian_translation":"почати, починати (щось нове, перший раз, абстрактні події)","additional_context":"розмовне, дуже поширене","usage_examples":["Wann fängt der Film an?","Ich fange morgen einen neuen Job an.","Er hat angefangen, Deutsch zu lernen.","Fang nicht wieder damit an!"],"synonyms":[{"word":"beginnen","difference":"формальніше, взаємозамінне"},{"word":"starten","difference":"запустити процес, проєкт; більш динамічне"},{"word":"loslegen","difference":"розмовне, енергійно братися за справу"}],"additional_info":["anfangen + zu + Infinitiv: Sie fing an zu weinen","anfangen mit etw. (Dat.): Fang mit der Arbeit an!"]}
+{"ukrainian_translation":"почати, починати (щось нове, перший раз, абстрактні події)","additional_context":"розмовне, дуже поширене","usage_examples":["Wann fängt der Film an?","Ich fange morgen einen neuen Job an.","Er hat angefangen, Deutsch zu lernen.","Fang nicht wieder damit an!"],"synonyms":[{"word":"beginnen","difference":"формальніше, взаємозамінне"},{"word":"starten","difference":"запустити процес, проєкт; більш динамічне"},{"word":"loslegen","difference":"розмовне, енергійно братися за справу"}],"additional_info":["mit etw. nichts anfangen können — не знати, що з чимось робити; не розуміти чогось"]}
 
 Beispiel 4:
 
@@ -78,7 +78,7 @@ Eingabe:
 - Wortart: VERB
 
 Ausgabe:
-{"ukrainian_translation":"зупинити, зупинитися (транспорт, рух; тимчасово)","additional_context":"дуже поширене; також: тривати (про погоду, ситуацію)","usage_examples":["Der Bus hält an der nächsten Haltestelle an.","Die Polizei hat das Auto angehalten.","Halt mal kurz an, ich muss aussteigen.","Der Regen hält schon den ganzen Tag an.","Er hielt den Atem an."],"synonyms":[{"word":"stoppen","difference":"різкіше, може бути остаточно"},{"word":"bremsen","difference":"гальмувати, сповільнювати"},{"word":"aufhören","difference":"припинити дію взагалі, не тільки фізичну"}],"additional_info":["Керування: jdn./etw. (Akk.) anhalten — зупинити когось/щось"]}
+{"ukrainian_translation":"зупинити, зупинитися (транспорт, рух; тимчасово)","additional_context":"дуже поширене; також: тривати (про погоду, ситуацію)","usage_examples":["Der Bus hält an der nächsten Haltestelle an.","Die Polizei hat das Auto angehalten.","Halt mal kurz an, ich muss aussteigen.","Der Regen hält schon den ganzen Tag an.","Er hielt den Atem an."],"synonyms":[{"word":"stoppen","difference":"різкіше, може бути остаточно"},{"word":"bremsen","difference":"гальмувати, сповільнювати"},{"word":"aufhören","difference":"припинити дію взагалі, не тільки фізичну"}],"additional_info":["den Atem anhalten — затамувати подих"]}
 
 Beispiel 5:
 
@@ -87,4 +87,4 @@ Eingabe:
 - Wortart: NOUN
 
 Ausgabe:
-{"ukrainian_translation":"морда (тварини), пика (грубо про обличчя)","additional_context":"розмовне; грубе коли про людей; die Schnauze voll haben — розм. набридло","usage_examples":["Der Hund hat eine lange Schnauze.","Halt die Schnauze!","Ich habe die Schnauze voll von diesem Job."],"synonyms":[{"word":"Maul","difference":"також грубе, частіше про тварин"},{"word":"Mund","difference":"нейтральне, ввічливе"},{"word":"Fresse","difference":"вульгарне, образливе"}],"additional_info":["die Schnauze, -n","Halt die Schnauze! — Заткнись! (грубо)"]}
+{"ukrainian_translation":"морда (тварини), пика (грубо про обличчя)","additional_context":"розмовне; грубе коли про людей","usage_examples":["Der Hund hat eine lange Schnauze.","Halt die Schnauze!","Ich habe die Schnauze voll von diesem Job."],"synonyms":[{"word":"Maul","difference":"також грубе, частіше про тварин"},{"word":"Mund","difference":"нейтральне, ввічливе"},{"word":"Fresse","difference":"вульгарне, образливе"}],"additional_info":["Halt die Schnauze! — Заткнись! (грубо)","die Schnauze voll haben — бути ситим по горло, набридло"]}
